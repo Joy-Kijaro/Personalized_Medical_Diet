@@ -9,11 +9,12 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn.svm import SVR
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
-st.header("Models")
+st.subheader("Models")
 
 st.subheader("Data Preparation and Splitting")
 
 df = pd.read_csv("data/Personalized_Diet_Recommendations.csv")
+
 x = df.drop(columns=['Patient_ID', 'Recommended_Meal_Plan'])
 y = df['Recommended_Meal_Plan']
 
@@ -97,3 +98,7 @@ results = pd.DataFrame({
 })
 
 st.dataframe(results)
+
+# st.write("Best Model")
+# best_model = max(results, key=lambda x: x['R² Score'])
+# st.success(f"Best Performing Model: {best_model['Model']} with R² Score of {best_model['R² Score']}")
