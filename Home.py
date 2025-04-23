@@ -8,7 +8,7 @@ with col1:
 with col2:
     st.caption("You are what you eat, so don't be fast, cheap or fake")
 
-st.subheader("WELCOME ABOARD")
+st.subheader("WELCOME ABOARD!")
 st.write("""
 *"The doctor of the future will give no medicine but will interest his patients in the care of the human frame, in diet and in the cause and prevention of disease."*
  — **Thomas Edison**
