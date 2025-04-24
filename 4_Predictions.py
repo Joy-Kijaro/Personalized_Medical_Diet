@@ -7,6 +7,9 @@ df = pd.read_csv("data/Personalized_Diet_Recommendations.csv")
 with open("recommended_calories_model.pkl", "rb") as file:
     model = pickle.load(file)
 
+expected_features = ["Gender", "Age", "Alcohol_Consumption", " Allergies", "Blood_Pressure_Diastolic",
+                     "Blood_Pressure_Systolic", "Caloric_Intake", "Carbohydrate_Intake", "Blood_Sugar_Level",
+                     "BMI", "Cholesterol_Level", "Chronic_Disease", " Daily_Steps", "Diabetic", "Dietary_Habits", "Exercise_Frequency"]
 
 def align_features_for_prediction(input_data: pd.DataFrame, expected_columns: list) -> pd.DataFrame:
     aligned_data = pd.DataFrame(columns=expected_columns)
