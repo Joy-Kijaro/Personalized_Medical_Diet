@@ -99,6 +99,4 @@ results = pd.DataFrame({
 
 st.dataframe(results)
 
-# st.write("Best Model")
-# best_model = max(results, key=lambda x: x['R² Score'])
-# st.success(f"Best Performing Model: {best_model['Model']} with R² Score of {best_model['R² Score']}")
+

@@ -2,11 +2,8 @@ import streamlit as st
 
 st.set_page_config(page_title="Home")
 st.title("PERSONALIZED DIET APP")
-col1, col2, = st.columns(2)
-with col1:
-    st.image("Screenshot (70).png", width=500)
-with col2:
-    st.caption("You are what you eat, so don't be fast, cheap or fake")
+st.image("Screenshot (70).png", width=500)
+st.caption("You are what you eat, so don't be fast, cheap or fake")
 
 st.subheader("WELCOME ABOARD!")
 st.write("""

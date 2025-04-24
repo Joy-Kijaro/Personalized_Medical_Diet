@@ -60,4 +60,11 @@ sns.boxplot(
 
 st.pyplot(fig)
 
-st.write("TO BE CONTINUED....")
+st.subheader("Chronic Disease vs. Recommended Meal Plan")
+disease_meal_plan = pd.crosstab(df['Chronic_Disease'], df['Recommended_Meal_Plan'])
+fig, ax = plt.subplots(figsize=(10, 6))
+disease_meal_plan.plot(kind='bar', stacked=True, ax=ax, colormap='Set2')
+plt.xlabel("Chronic Disease")
+plt.ylabel("Count")
+plt.title("Meal Plan Distribution by Chronic Disease")
+st.pyplot(fig)
