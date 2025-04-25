@@ -1,15 +1,18 @@
 import streamlit as st
 import pandas as pd
 import pickle
+import os
 
-df = pd.read_csv("data/Personalized_Diet_Recommendations.csv")
+df = pd.read_csv(os.path.join("data", "Personalized_Diet_Recommendations.csv"))
 
 with open("recommended_calories_model.pkl", "rb") as file:
     model = pickle.load(file)
 
 expected_features = ["Gender", "Age", "Alcohol_Consumption", " Allergies", "Blood_Pressure_Diastolic",
                      "Blood_Pressure_Systolic", "Caloric_Intake", "Carbohydrate_Intake", "Blood_Sugar_Level",
-                     "BMI", "Cholesterol_Level", "Chronic_Disease", " Daily_Steps", "Diabetic", "Dietary_Habits", "Exercise_Frequency"]
+                     "BMI", "Cholesterol_Level", "Chronic_Disease", " Daily_Steps", "Diabetic", "Dietary_Habits",
+                     "Exercise_Frequency", " Genetic_Risk_Factor", "Exercise_Level", "Fat_Intake", "Food_Aversions",
+                     " Height_cm", "Hypertensive"]
 
 def align_features_for_prediction(input_data: pd.DataFrame, expected_columns: list) -> pd.DataFrame:
     aligned_data = pd.DataFrame(columns=expected_columns)
@@ -67,15 +70,41 @@ else:
 if Submit and BMI is not None:
     expected_features = model.feature_names_in_
 user_inputs = {
+# "Age": 30,
+    # "Weight": 70,
+    # "Height": 1.75,
+    # "Gender": 1,  # 1 for Male, 0 for Female
+    # "Systolic_Pressure": 120,
+    # "Diastolic_Pressure": 80,
+    # "Cholesterol_Level": 180,
+    # "Blood_Sugar_Level": 90,
+    # "BMI": round(70 / (1.75 ** 2), 1),
+    # "Physical_Activity_Level": 1,  # 0 = Low, 1 = Moderate, 2 = High
+    # "Dietary_Habits": 1,           # 0 = Vegetarian, 1 = Non-Vegetarian, 2 = Vegan
+    # "Stress_Level": 1,             # 0 = Low, 1 = Medium, 2 = High
+    # "Exercise_Level": 2            # 0 = None, 1 = Light, 2 = Moderate, 3 = Intense
     "Gender": Gender,
-    "Age": Age,
-    "Weight": Weight,
-    "Height": Height,
-    "Systolic_Pressure": Systolic_Pressure,
-    "Diastolic_Pressure": Diastolic_Pressure,
-    "Cholesterol_Level": Cholesterol_Level,
-    "Blood_Sugar_Level": Blood_Sugar_Level,
-    "BMI": BMI
+    "Age": Age
+    "Alcohol_Consumption":
+    "Allergies",
+    "Blood_Pressure_Diastolic",
+    "Blood_Pressure_Systolic",
+    "Caloric_Intake",
+    "Carbohydrate_Intake",
+    "Blood_Sugar_Level",
+    "BMI",
+    "Cholesterol_Level",
+    "Chronic_Disease",
+    "Daily_Steps",
+    "Diabetic",
+    "Dietary_Habits",
+    "Exercise_Frequency",
+    "Genetic_Risk_Factor",
+    "Exercise_Level",
+    "Fat_Intake",
+    "Food_Aversions",
+    "Height_cm",
+    "Hypertensive"
 }
 
 input_data = pd.DataFrame([{
